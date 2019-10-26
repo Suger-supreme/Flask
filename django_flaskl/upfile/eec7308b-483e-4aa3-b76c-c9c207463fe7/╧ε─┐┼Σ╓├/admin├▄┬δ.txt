@@ -1,0 +1,21 @@
+Django如何重设Admin密码
+django设置用户是python manage.py createsuperuser,但是如果忘记密码，那么应该进入shell环境 下修改
+
+python manage.py shell
+
+ 
+
+from django.contrib.auth.models import User
+
+user = User.objects.get(username='admin')
+user.set_password('new_password')
+user.save(）
+from vmaig_auth.models import VmaigUser
+user=VmaigUser.objects.create_superuser('admin','root','1234')
+
+http://127.0.0.1:8000/admin/login/?next=/admin/
+
+python manage.py createsuperuser
+、
+执行python manage.py createsuperuser 您有17个未应用的迁移。您的项目可能无法正常工作，直到您应用迁移的应用程序(s):管理，auth，内容类型，会话。
+运行“python management .py migration”来应用它们。
